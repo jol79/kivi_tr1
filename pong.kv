@@ -11,8 +11,8 @@
 
         # line in the center of the window:
         Rectangle:
-            pos: self.center_x - 0,0
-            size: 1, self.height
+            pos: self.center_x - 5,0
+            size: 10, self.height
 
     # left counter:
     Label:
@@ -21,7 +21,7 @@
         top: root.top - 50
 
         # text of the label:
-        text: "0"
+        text: str(root.player_1.score)
 
     # right counter:
     Label:
@@ -30,19 +30,37 @@
         top: root.top - 50
 
         # text of the label:
-        text: "0"
+        text: str(root.player_2.score)
 
     # setting up the PongGame ball Obj.Property to id:
     PongBall:
         id: pong_ball
         center: self.parent.center
 
+    PongPaddle:
+        id: player_left
+        x: root.x
+        center_y: root.center_y
+
+    PongPaddle:
+        id: player_right
+        x: root.width - self.width
+        center_y: root.center_y
+
 
 # widget rule for ball:
 <PongBall>:
-
     size: 50, 50
     canvas:
         Ellipse:
+            pos: self.pos
+            size: self.size
+
+
+# widget rule for paddle:
+<PongPaddle>:
+    size: 25, 200
+    canvas:
+        Rectangle:
             pos: self.pos
             size: self.size
