@@ -1,0 +1,48 @@
+###
+# name must match with app name (the part
+# before the App ending) in the main file:
+###
+# widget rule (will be applied to any instances of the n. class):
+<PongGame>:
+    # child widget id
+    ball: pong_ball
+
+    canvas:
+
+        # line in the center of the window:
+        Rectangle:
+            pos: self.center_x - 0,0
+            size: 1, self.height
+
+    # left counter:
+    Label:
+        font_size: 70
+        center_x: root.width / 4
+        top: root.top - 50
+
+        # text of the label:
+        text: "0"
+
+    # right counter:
+    Label:
+        font_size: 70
+        center_x: root.width * 3 / 4
+        top: root.top - 50
+
+        # text of the label:
+        text: "0"
+
+    # setting up the PongGame ball Obj.Property to id:
+    PongBall:
+        id: pong_ball
+        center: self.parent.center
+
+
+# widget rule for ball:
+<PongBall>:
+
+    size: 50, 50
+    canvas:
+        Ellipse:
+            pos: self.pos
+            size: self.size
